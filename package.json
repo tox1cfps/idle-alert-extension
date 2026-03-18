@@ -1,0 +1,68 @@
+{
+  "name": "idle-alert",
+  "displayName": "Idle Alert",
+  "description": "Plays a sound and shows a warning when the user is idle for too long.",
+  "version": "1.0.0",
+  "publisher": "tox1cfps",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "idleAlert.testAlert",
+        "title": "Idle Alert: Testar Alerta Sonoro"
+      },
+      {
+        "command": "idleAlert.enable",
+        "title": "Idle Alert: Ativar"
+      },
+      {
+        "command": "idleAlert.disable",
+        "title": "Idle Alert: Desativar"
+      }
+    ],
+    "configuration": {
+      "title": "Idle Alert",
+      "properties": {
+        "idleAlert.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ativa ou desativa a extensão."
+        },
+        "idleAlert.minutesBeforeAlert": {
+          "type": "number",
+          "default": 5,
+          "description": "Tempo de ociosidade (em minutos) antes do alerta."
+        },
+        "idleAlert.repeat": {
+          "type": "boolean",
+          "default": false,
+          "description": "Repetir o alerta enquanto o usuário estiver ocioso."
+        },
+        "idleAlert.volume": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Volume do som (0 a 1)."
+        },
+        "idleAlert.customAudioPath": {
+          "type": "string",
+          "default": "",
+          "description": "Caminho absoluto para um arquivo de áudio personalizado."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "play-sound": "^1.1.6"
+  }
+}
